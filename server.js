@@ -40,7 +40,7 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 //adicionando segurança nas aplicações
 app.use(csrf());
-// app.use(helmet());
+app.use(helmet());
 
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
