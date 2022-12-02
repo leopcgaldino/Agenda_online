@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const csrf = require('csurf')
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 const routes = require('./routes');
@@ -40,7 +40,7 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 //adicionando segurança nas aplicações
 app.use(csrf());
-app.use(helmet());
+// app.use(helmet());
 
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
@@ -48,7 +48,7 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
-  app.listen(process.env.PORT_SERVER, () => {
-    console.log(`Acessar http://localhost:${process.env.PORT_SERVER}`);
+  app.listen(3000, () => {
+    console.log('Acessar http://localhost:3000');
   });  
 });
